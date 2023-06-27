@@ -1,19 +1,40 @@
-body {
-    margin: 0;
-    display: flex;
-    height: 100vh;
-    min-height: 100vh; 
-    background-color: #0A1529;
-  }
 
-body:nth-child(n){
-  padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap');
+
+
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  min-height: 100vh;
+  background-color: #0A1529;
 }
-  
-  
+
 canvas {
-    width: 100%;
-    min-height: 100vh; 
-    background-color: #0A1529;
-    position: fixed;
+  width: 100%;
+  background-color: #0A1529;
+  position: fixed;
+}
+
+body:nth-child(n) {
+  padding: 0;
+  color: aqua;
+  justify-content: center;
+  text-align: center;
+}
+
+nav:nth-child(n) {
+  text-align: center;
+}
+
+#hero-photo {
+  max-height: 20vh;
+  border: 0cap solid;
+  border-radius: 50%;
+}
+
+#coming-soon {
+  font-size: 5em;
+  font-family: Montserrat;
+  color: rgb(0, 255, 128);
 }
