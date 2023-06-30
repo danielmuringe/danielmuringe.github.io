@@ -40,7 +40,7 @@ const BIO_DATA = {
     'Nationality of Birth': 'Kenyan',
     'Residence': 'Nairobi, Kenya',
     'E-mail': 'danielmuringe@gmail.com',
-    'Mobile Phone Number': '0792829730'
+    'Mobile Phone Number': '+254792829730'
 }
 
 const BIO_DATA_TAG = document.createElement('div');
