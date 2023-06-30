@@ -20,7 +20,7 @@ CACHE_CONTROL_TAG.content = 'public';
 HEAD_TAG.append(CACHE_CONTROL_TAG);
 
 
-// Add heading to section
+// Add heading to section function
 function addHeading(heading='', tag){
     let headingTag = document.createElement('div');
     let classNames = ['section-heading',
