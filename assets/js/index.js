@@ -1,37 +1,44 @@
 // INDEX JAVASCRIPT FILE
 
-const headTag = document.getElementsByTagName('head')[0];
-const bodyTag = document.getElementsByTagName('body')[0];
+const HEAD_TAG = document.head;
+const BODY_TAG = document.body;
 
 // Main page content
-const mainTag = document.createElement('main');
-mainTag.className = 'main';
-bodyTag.appendChild(mainTag);
+const MAIN_TAG = document.createElement('main');
+MAIN_TAG.className = 'main';
+BODY_TAG.appendChild(MAIN_TAG);
 
 // Viewport element
-const viewportTag = document.createElement('meta');
-viewportTag.name = 'viewport';
-viewportTag.content = 'width=device-width,initial-scale=1';
-headTag.append(viewportTag);
+const VIEWPORT_TAG = document.createElement('meta');
+VIEWPORT_TAG.name = 'viewport';
+VIEWPORT_TAG.content = 'width=device-width,initial-scale=1';
+HEAD_TAG.append(VIEWPORT_TAG);
 
 // Viewport element
-const cacheControlTag = document.createElement('meta');
-cacheControlTag.httpEquiv = 'Cache-Control';
-cacheControlTag.content = 'public';
-headTag.append(cacheControlTag);
+const CACHE_CONTROL_TAG = document.createElement('meta');
+CACHE_CONTROL_TAG.httpEquiv = 'Cache-Control';
+CACHE_CONTROL_TAG.content = 'public';
+HEAD_TAG.append(CACHE_CONTROL_TAG);
 
 // Link to index css
-const indexCssTag = document.createElement('link');
-indexCssTag.href = 'assets/css/index.css';
-indexCssTag.type = 'text/css';
-indexCssTag.rel = 'stylesheet';
-headTag.append(indexCssTag);
+const INDEX_CSS_TAG = document.createElement('link');
+INDEX_CSS_TAG.href = 'assets/css/index.css';
+INDEX_CSS_TAG.type = 'text/css';
+INDEX_CSS_TAG.rel = 'stylesheet';
+HEAD_TAG.append(INDEX_CSS_TAG);
 
 
-// CONNECTING DOTS BACKGROUND
-// Set variables
-const show = 75;
-const canvas = document.getElementById("canvas");
-const scene = canvas.getContext("2d");
-let width = (canvas.width = window.innerWidth);
-let height = (canvas.height = window.innerHeight);
+// Add projects list dynamically
+const PROJECTS = [
+    'canvas-learn',
+];
+
+const PROJECTS_TAG = document.getElementById('projects');
+
+for (const project of PROJECTS) {
+    let li_tag = document.createElement('li');
+    let link = document.createElement('a');
+    link.href = project+'/index.html';
+    li_tag.appendChild(link);
+    PROJECTS_TAG.appendChild(li_tag);
+}
