@@ -1,51 +1,117 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap');
 
-body {
-  margin: 0;
-  display: flex;
-  height: 100vh;
-  min-height: 100vh;
-  background-color: #0A1529;
+:root{
+  --border-color: rgb(0, 255, 128);
+  --border-thickness: 2px;
+  --border: var(--border-thickness) var(--border-color) solid;
+  --glass-bg: rgba(0,0,0,.5);
+  --border-radius: 10px;
+}
+
+*{
+  color: aqua;
   font-family: Montserrat;
 }
 
-canvas {
-  width: 100%;
+body {
+  margin: 0;
+  height: 100vh;
+  min-height: 100vh;
   background-color: #0A1529;
-  position: fixed;
 }
 
 body:nth-child(n) {
   padding: 0;
   color: aqua;
-  justify-content: center;
   text-align: center;
+}
+
+a:link, a:active{
+  text-decoration: none;
+}
+
+nav{
+  padding-top: 5vh;
 }
 
 nav:nth-child(n) {
   text-align: center;
 }
 
+main:nth-child(n){
+  margin: auto;
+  margin-top: 5vh;
+  width: 95vw;
+  padding-bottom: 10vh;
+}
+
+.section-heading{
+  font-size: 2em;
+  padding-top: 2em;
+}
+
+#bio-data{
+  background-color: var(--glass-bg);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  padding: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bio-datum{
+  padding: .5em;
+  text-align: left;
+  margin: auto;
+  display: list-item;
+  font-size: 1.3em;
+}
+
 #hero-photo {
   max-height: 20vh;
-  border: 0cap solid;
+  min-height: 7em;
+  border: var(--border);
   border-radius: 50%;
 }
 
-#project-link:link, #project-link:visited{
-  font-size: 5em;
-  color: rgb(0, 255, 128);
-  text-decoration: none;
-  display: block;
+#projects{
+  background-color: var(--glass-bg);
+  margin-top: 2vh;
 }
 
-#project-iframe{
-  width: 50vw;
-  height: 25vh;
+.project{
+  --project-padding: 5vh;
+  display: block;
+  padding-top: var(--project-padding);
+  padding-bottom: var(--project-padding);
+}
+
+.project:link, .project:visited{
+  text-decoration: none;
+  text-align: center;
+  font-size: 3em;
+}
+
+.project-heading{
+  margin: auto 0;
+  padding: auto 0;
+  color: rgb(0, 255, 128);
+}
+
+.project-break-line{
+  width: 60vw;
+}
+
+.project-iframe{
+  display: block;
+  width: 80%;
+  height: 40vh;
+  border: var(--border);
+  border-radius: var(--border-radius);
   overflow-x: hidden;
   overflow-y: hidden;
-  border: 2px black solid;
-  border-radius: 20px;
+  margin: auto;
 }
 
