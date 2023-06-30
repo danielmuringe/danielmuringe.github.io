@@ -5,8 +5,8 @@
   --border-color: rgb(0, 255, 128);
   --border-thickness: 2px;
   --border: var(--border-thickness) var(--border-color) solid;
-  --glass-bg: rgba(0,0,0,.5);
-  --border-radius: 10px;
+  --glass-bg: rgba(0,0,0,.3);
+  --border-radius: 15px;
 }
 
 *{
@@ -19,11 +19,6 @@ body {
   height: 100vh;
   min-height: 100vh;
   background-color: #0A1529;
-}
-
-body:nth-child(n) {
-  padding: 0;
-  color: aqua;
   text-align: center;
 }
 
@@ -35,27 +30,34 @@ nav{
   padding-top: 5vh;
 }
 
-nav:nth-child(n) {
+nav>* {
   text-align: center;
 }
 
-main:nth-child(n){
+main{
+  padding-bottom: 10vh;
+}
+
+main>*{
   margin: auto;
   margin-top: 5vh;
   width: 95vw;
-  padding-bottom: 10vh;
+  border: 1px var(--border-color) solid;
+  padding-bottom: 5vh;
 }
 
 .section-heading{
   font-size: 2em;
-  padding-top: 2em;
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  font-variant: small-caps;
+  text-decoration: overline;
 }
 
 #bio-data{
   background-color: var(--glass-bg);
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
-  padding: 3vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,17 +93,17 @@ main:nth-child(n){
 .project:link, .project:visited{
   text-decoration: none;
   text-align: center;
-  font-size: 3em;
 }
 
 .project-heading{
+  font-size: 2.5em;
   margin: auto 0;
   padding: auto 0;
   color: rgb(0, 255, 128);
 }
 
 .project-break-line{
-  width: 60vw;
+  width: 70%;
 }
 
 .project-iframe{
