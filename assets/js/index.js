@@ -36,9 +36,23 @@ const PROJECTS = [
 const PROJECTS_TAG = document.getElementById('projects');
 
 for (const project of PROJECTS) {
-    let li_tag = document.createElement('li');
-    let link = document.createElement('a');
-    link.href = project+'/index.html';
-    li_tag.appendChild(link);
-    PROJECTS_TAG.appendChild(li_tag);
+    const path = project+'/index.html';
+
+    // Add link to project
+    const project_tag = document.createElement('a');
+    project_tag.id = 'project-link';
+    project_tag.innerText = project;
+    project_tag.href = path;
+    PROJECTS_TAG.appendChild(project_tag);
+
+    // Iframe to project
+    const iframe_tag = document.createElement('iframe');
+    iframe_tag.allow = 'allow';
+    iframe_tag.allowFullscreen = true;
+    iframe_tag.frameBorder = '0';
+    iframe_tag.id = 'project-iframe';
+    iframe_tag.loading = 'lazy';
+    iframe_tag.scrolling = 'no';
+    iframe_tag.src = path;
+    PROJECTS_TAG.appendChild(iframe_tag);
 }
