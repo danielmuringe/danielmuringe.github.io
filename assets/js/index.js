@@ -22,14 +22,3 @@ CACHE_CONTROL_TAG.httpEquiv = 'Cache-Control';
 CACHE_CONTROL_TAG.content = 'public';
 HEAD_TAG.append(CACHE_CONTROL_TAG);
 
-
-// Section heading function
-function addHeading(heading='', tag){
-    let headingTag = document.createElement('div');
-    let classNames = ['section-heading',
-                      heading.replace(/ /g, '-').toLowerCase()+'-heading'];
-    headingTag.classList.add(...classNames);                  
-    headingTag.classList.add();
-    headingTag.innertext = heading;
-    tag.appendChild(headingTag);
-} 

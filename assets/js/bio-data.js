@@ -1,3 +1,15 @@
+
+// Section heading function
+function addHeading(heading='', tag){
+    let headingTag = document.createElement('div');
+    let classNames = ['section-heading',
+                      heading.replace(/ /g, '-').toLowerCase()+'-heading'];
+    headingTag.classList.add(...classNames);                  
+    headingTag.innerText = heading;
+    tag.appendChild(headingTag);
+} 
+
+
 //Add bio-data dynamically
 const BIO_DATA = {
     'Name': 'Daniel Muringe',
