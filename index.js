@@ -2,6 +2,9 @@ const bodyTag = document.getElementsByTagName('body')[0]
 const headTag = document.getElementsByTagName('head')[0]
 
 
+// Square function
+let sqr = num => num**2;
+
 //Create css link
 const indexCss = document.createElement('link');
 indexCss.href = 'index.css';
@@ -64,52 +67,8 @@ let yRand = (n)=>randInt(n,window.innerHeight-n);
 let randCoord = (n)=>[xRand(n), yRand(n)];
 
 
+
 class Canvas{
-
-    render(obj=this){
-
-        
-        function bouncingCircle(radius,centre=randCoord(),velocity, colour='black'){
-            this.radius = radius;
-            this.centre = centre;
-            let [x,y] = this.centre;
-            let [dx,dy] = this.velocity = velocity; 
-
-            this.draw = ()=>{
-                // Draw circle on canvas
-                obj.circle(this.radius, this.centre, colour);
-
-                // Create bounding effect of circle
-                let xImpactWall = x+this.radius>=window.innerWidth||x-this.radius<=0;
-                let yImpactWall = y+this.radius>=window.innerHeight||y-this.radius<=0;
-                if (xImpactWall) dx *= -1;
-                if (yImpactWall) dy *= -1;
-                x+=dx; y+=dy;
-                this.centre[0]=x; this.centre[1]=y;
-                this.velocity[0]=dx; this.velocity[1]=dy;
-
-                // console.log('velocity: ',this.velocity, 'centre', this.centre);
-
-                return this.centre;
-            } 
-        }
-
-        let balls = [];
-        let ballCount = 10;
-        for (let i=0; i<ballCount; i++) {
-            balls.push(new bouncingCircle(
-                                randInt(30,30),
-                                randCoord(50),
-                                randList(2,-5,5,(val=>val==0)),
-                                `rgb(${randInt(255)},${randInt(255)},${randInt(255)})`));
-        }
-        function animate(){
-            requestAnimationFrame(animate);
-            obj.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-            for (const ball of balls) ball.draw();
-        }
-        animate()
-    }
     
     
     constructor(){
@@ -121,20 +80,74 @@ class Canvas{
         // Draw using context
         this.ctx = this.tag.getContext('2d');
         this.defaultColor = '#000000';
-
+    
         // Add object to locate position of mouse
-        this.mouse = {x: NaN, y:NaN, capture:false}
+        this.mouse = {x: NaN, y:NaN}
         window.addEventListener('mousemove',
             (event)=>{
-                if (this.mouse.capture){
-                    this.mouse.x = event.x;
-                    this.mouse.y = event.y;
-                }
+                this.mouse.x = event.x;
+                this.mouse.y = event.y;
             }
         )
         
         // Render stuff on canvas
         this.render();
+    }
+
+    render(obj=this){
+
+        function bouncingCircle(radius,centre=randCoord(),velocity, color=obj.defaultColor){
+            this.radius = radius;
+            this.centre = centre;
+            let [x,y] = this.centre;
+            let [dx,dy] = this.velocity = velocity;
+
+            
+            let inProximity = (...coord) => sqr(coord[0]-x)+sqr(coord[1]-y)<=sqr(this.radius);
+
+            this.draw = ()=>{
+                
+                // Mouse interactivity
+                let mouseProximity = inProximity(obj.mouse.x,obj.mouse.y);
+                if (mouseProximity) this.color = 'rgb(0, 15, 46)';
+                else this.color = color;
+
+                // Draw circle on canvas
+                obj.circle(this.radius, this.centre, this.color);
+
+                // Create bounding effect of circle
+                let xImpactWall = x+this.radius>=window.innerWidth||x-this.radius<=0;
+                let yImpactWall = y+this.radius>=window.innerHeight||y-this.radius<=0;
+                if (xImpactWall) dx *= -1;
+                if (yImpactWall) dy *= -1;
+                x+=dx; y+=dy;
+                this.centre[0]=x; this.centre[1]=y;
+                this.velocity[0]=dx; this.velocity[1]=dy;
+            }
+        }
+
+        let balls = [];
+        let ballCount = 10;
+        let col = ()=>randInt(0,255,(val=>val<=10));
+        for (let i=0; i<ballCount; i++) {
+            balls.push(new bouncingCircle(
+                                randInt(10,30),
+                                randCoord(50),
+                                randList(2,-3,3,(val=>val==0)),
+                                `rgb(${col()},${col()},${col()})`));
+        }
+        function animate(){
+            requestAnimationFrame(animate);
+            obj.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            let i = 0;
+            for (let i = 0; i < balls.length; i++) {
+                const  ball = balls[i];
+                ball.draw();
+                // console.log(i);
+            }
+        }
+        animate()
+
     }
     
 
@@ -162,7 +175,7 @@ class Canvas{
         this.ctx.moveTo(...begin);
         this.ctx.lineTo(...end);
         this.ctx.strokeStyle = color;
-        // func(this.context);
+        func(this.context);
         this.ctx.stroke();
     }
     
