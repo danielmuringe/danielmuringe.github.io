@@ -2,9 +2,9 @@
 
 
 const PROJECTS = [
+    'dynamic-web',
     'bouncing-balls',
-    'dynamic-web'
-];
+].sort();
 
 
 const PROJECTS_TAG = document.createElement('div');
