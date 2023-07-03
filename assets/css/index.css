@@ -109,7 +109,7 @@ main>*{
 .project-iframe{
   display: block;
   width: 80%;
-  height: 40vh;
+  height: 60vh;
   border: var(--border);
   border-radius: var(--border-radius);
   overflow-x: hidden;
