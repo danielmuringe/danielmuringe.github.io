@@ -2,7 +2,7 @@
 
 
 const PROJECTS = [
-    'canvas-learn',
+    'bouncing-balls',
 ];
 
 
