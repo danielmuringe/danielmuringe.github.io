@@ -3,6 +3,7 @@
 
 const PROJECTS = [
     'bouncing-balls',
+    'dynamic-web'
 ];
 
 
