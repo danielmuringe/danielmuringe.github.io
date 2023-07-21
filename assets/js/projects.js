@@ -4,6 +4,7 @@
 const PROJECTS = [
     'dynamic-web',
     'bouncing-balls',
+    'rotating-square'
 ].sort();
 
 
