@@ -2,10 +2,7 @@
 
 
 const PROJECTS = [
-    'dynamic-web',
-    'bouncing-balls',
-    'rotating-square'
-].sort();
+];
 
 
 const PROJECTS_TAG = document.createElement('div');
@@ -16,13 +13,13 @@ addHeading("Projects", PROJECTS_TAG);
 
 
 for (const project of PROJECTS) {
-    const path = project+'/index.html';
+    const path = project + '/index.html';
 
     // Add link to project
     const projectTag = document.createElement('a');
     projectTag.className = 'project';
     projectTag.href = path;
-    
+
     // Add project heading
     const projectHeading = document.createElement('div');
     projectHeading.className = 'project-heading';
