@@ -1,12 +1,9 @@
 //Add bio-data dynamically
 const BIO_DATA = {
     'Name': 'Daniel Muringe',
-    'Age': (new Date()).getFullYear()-2005,
     'Gender': 'Male',
     'Nationality of Birth': 'Kenyan',
-    'Residence': 'Nairobi, Kenya',
     'E-mail': 'danielmuringe@gmail.com',
-    'Phone Number': '+254792829730'
 }
 
 const BIO_DATA_TAG = document.createElement('div');
